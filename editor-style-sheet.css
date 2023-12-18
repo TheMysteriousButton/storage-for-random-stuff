@@ -1,0 +1,28 @@
+.codefont{
+  font-family:"Fira Code",serif;
+}
+.editor-content{
+  display:inline-block;
+  left:60px;
+  min-height:100%;
+  background:rgb(70, 70, 70);
+  position:relative;
+}
+.editor-content:focus{
+  outline: none;
+}
+.editor-line-number{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  white-space:pre;
+}
+.editor-div{
+  position:absolute;
+  overflow-y:auto;
+  overflow-x:auto;
+  background:rgb(115, 115, 115);
+}
+.editor-flag{
+  visibility:hidden;
+}
