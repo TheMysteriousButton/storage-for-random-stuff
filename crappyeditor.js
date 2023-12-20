@@ -99,7 +99,7 @@ var codeViewer=class{
                         var editedind=childnodes.indexOf(sel.anchorNode);
                         var edited=childnodes[editedind];
                         var next=childnodes[editedind+1];
-                        if(next!==undefined){
+                        if(next!==undefined&&edited!==undefined){
                             var range=new Range();
                             range.selectNode(edited);
                             var rectA=range.getBoundingClientRect();
