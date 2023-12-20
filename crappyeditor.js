@@ -269,7 +269,7 @@ var codeViewer=class{
                     
                 }
                 addLineNumber(y,number){
-                    var addst="<span class='codefont editor-line-number' style='position:absolute;top:"+y+"px;'>"+number.toString().padStart(6," ")+"</span>";
+                    var addst="<span class='codefont editor-line-number' style='position:relative;top:"+y+"px;'>"+number.toString().padStart(6," ")+"</span>";
                     this.gutterel.innerHTML+=addst;
                     
                 }
