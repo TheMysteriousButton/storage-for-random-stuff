@@ -45,6 +45,7 @@ var codeViewer=class{
                     var contentel=document.createElement("div");
                     contentel.classList.add('codefont');
                     contentel.classList.add('editor-content');
+                    contentel.classList.add('no-include');
                     this.contentel=contentel;
                     this.contentel.spellcheck=false;
                     this.contentel.contentEditable="plaintext-only";
@@ -58,6 +59,7 @@ var codeViewer=class{
                     gutterel.id='editor-'+this.number+'-gutter';
                     gutterel.classList.add("codefont");
                     gutterel.classList.add("editor-gutter");
+                    gutterel.classList.add('no-include');
                     this.gutterel=gutterel;
                     this.div.appendChild(gutterel);
                     this.boundingRect=this.div.getBoundingClientRect();
