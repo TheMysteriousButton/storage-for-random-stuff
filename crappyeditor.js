@@ -23,6 +23,13 @@ var codeViewer=class{
                                 th.div.scrollLeft=0;
                             }
                         },5);
+                        var s=window.getSelection();
+                        th.currentLineValue=s.anchorOffset;
+                        if(
+                            !s.anchorNode.isSameNode(s.focusNode)
+                        ){
+                            th.currentLineValue=null;
+                        }
                     }
                     this.div.onkeyup=function(e){
                         
@@ -53,7 +60,7 @@ var codeViewer=class{
                     gutterel.classList.add("editor-gutter");
                     this.gutterel=gutterel;
                     this.div.appendChild(gutterel);
-                    
+                    this.boundingRect=this.div.getBoundingClientRect();
                 }
                 splitIntoNodes(txt){
                     var nodelist=[];
@@ -203,6 +210,7 @@ var codeViewer=class{
                             THIS.contentel.insertBefore(c,THIS.contentel.childNodes[start]);
                         }
                     });
+                    this.updateLineNumbers()
                     return nds;
                 }
                 onscroll(){
@@ -269,9 +277,9 @@ var codeViewer=class{
                     
                 }
                 addLineNumber(y,number){
-                    var addst="<span class='codefont editor-line-number' style='position:relative;top:"+y+"px;'>"+number.toString().padStart(6," ")+"</span>";
+                    var h=this.boundingRect.top;
+                    var addst="<span class='codefont editor-line-number' style='position:absolute;top:"+(y-h).toString()+"px;'>"+number.toString().padStart(6," ")+"</span>";
                     this.gutterel.innerHTML+=addst;
-                    
                 }
                 getText(start,stop){
                     var retst="";
@@ -282,5 +290,4 @@ var codeViewer=class{
                     });
                     return retst;
                 }
-                
             };
