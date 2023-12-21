@@ -1,4 +1,4 @@
-var codeViewer=class{
+            var codeViewer=class{
                 static instances=0;
                 lineWrap=false;
                 currentLinepos="";
@@ -52,6 +52,7 @@ var codeViewer=class{
                     var bd=this.div.getBoundingClientRect();
                     
                     this.contentel.style.minWidth=(bd.width-70).toString()+"px";
+                    
                     this.div.contentEditable="false";
                     this.div.appendChild(contentel);
 
@@ -224,6 +225,7 @@ var codeViewer=class{
                     if(document.caretRangeFromPoint){
                         //webkit (chrome,edge, etc)
                         var range=document.caretRangeFromPoint(x,y);
+                        if(range===null){return undefined;}
                         return{
                             "node":range.startContainer,
                             "rect":range.getBoundingClientRect(),
@@ -231,6 +233,7 @@ var codeViewer=class{
                     }else{
                         //firefox
                         var range=document.caretPositionFromPoint(x,y);
+                        if(range===null){return undefined;}
                         return{
                             "node":range.offsetNode,
                             "rect":range.getClientRect(),
@@ -247,6 +250,8 @@ var codeViewer=class{
                     var left=viewRect.left+61;
                     var upel=this.getBoundariesFromTextNodeAtPoint(left,up);
                     var dnel=this.getBoundariesFromTextNodeAtPoint(left,down);
+                    if(dnel===undefined){return;}
+                    
                     //top and bottom elements on the screen
                     var stind=childnodes.indexOf(upel.node);//upper node
                     var ndind=childnodes.indexOf(dnel.node);//lower node
@@ -293,3 +298,4 @@ var codeViewer=class{
                     return retst;
                 }
             };
+            
